@@ -1,22 +1,22 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dao.MembersDAO;
 import com.example.demo.dto.Member;
 import com.example.demo.service.MembersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MembersServiceImpl implements MembersService {
     //구현부를 작성
+    @Autowired
+    private MembersDAO dao;
+    // DAO를 생성하고 호출만 하도록 수정
     @Override
-    public Member testMember() {
-        //컨트롤러에서 작성했던 로직을 가지고 옴.
+    public List<Member> testMember() {
 
-        Member testMember = new Member();
-        testMember.setId(1);
-        testMember.setName("testName");
-        testMember.setAge(15);
-        testMember.setDept("서비스로 이동함!");
-        //로직을 가져왔음을 표시해둠.
-        return testMember;
+        return dao.testMember();
     }
 }
